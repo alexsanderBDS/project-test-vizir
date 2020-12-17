@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Telzir | FaleMais</title>
+        <link rel="stylesheet" href="./css/styles.css"/>
+    </head>
+    <body>
+        <div class="main-container"> Calcule seu Plano.
+            <form class="sub-container" action="resultado" method="GET">
+                <label class="lbl-1">Origem / Destino</label>
+                <label class="lbl-3">Tempo</label>
+                <label class="lbl-4">Plano FaleMais</label>
+                <!-- <label class="lbl-2">Com FaleMais</label>
+                <label class="lbl-3">Sem FaleMais</label> -->
+                <select class="input-1" name="origem_destino" required>
+                    <%ddd.forEach((valor) => {%>
+                    <option><%=valor.origem + ' para ' + valor.destino%></option>
+                    <% }) %>
+                </select>
+                <input class="input-2" type="number" name="tempo" min="1" required autocomplete="off" placeholder="Informe o total de tempo">
+                <select name="plano" required>
+                    <%planos.forEach((valor) => {%>
+                        <option><%=valor.descricao %></option>
+                        <% }) %>
+                </select>
+                <!-- <label name="sem_falemais"><%=totais.sem_falemais %></label>
+                <label name="com_falemais"><%=totais.com_falemais %></label> -->
+                <button class="button-1">CALCULAR</button>
+            </form>
+        </div>
+        <div class="tbl-container">
+            <div class="titulos">Origem</div>
+            <div class="titulos">Destino</div>
+            <div class="titulos">Tempo</div>
+            <div class="titulos">Plano FaleMais</div>
+            <div class="titulos">Com FaleMais</div>
+            <div class="titulos">Sem FaleMais</div>
+            <%Object.keys(totais).map((valor) => {%>
+                <div><%=totais[valor] %></div>
+                <% }) %>
+        </div>
+    </body>
+</html>
